@@ -3,11 +3,6 @@ from robot.api.deco import keyword
 import AccessRepository as AR
 import CommonFunctions as CF
 
-def getData():
-    loc = 'Data\\FalconTestData.xlsx'
-    SheetName = BuiltIn().get_variable_value('${Company}')
-    testcase = 'UWQuestions'
-    return CF.fncGetValues(loc, SheetName, testcase)
 
 @keyword
 def Go_to_UW_Questions():
@@ -20,7 +15,8 @@ def Go_to_UW_Questions():
 
 @keyword
 def Add_Policy_Information():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'UWQuestions')
     uMarketCap = myData['Option1']
     uTotalAssets = myData['Option2']
     uAnnualRevenues = myData['Option3']
@@ -50,7 +46,8 @@ def Add_Policy_Information():
 
 @keyword
 def Add_Underlying_Insurance_Risk_Factors():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'UWQuestions')
     uFinCondition = myData['Option7']
     uNoOperations = myData['Option8']
     uAcqHistory = myData['Option9']

@@ -1,5 +1,6 @@
 from robot.libraries.BuiltIn import BuiltIn
 import time
+import platform
 
 def fncGetValues(loc, sheetName, testCase):
     # import openpyxl module to use excel operations
@@ -28,6 +29,22 @@ def fncGetValues(loc, sheetName, testCase):
 
     # Return the dictionary
     return getValues
+
+def getLoginCreds(uEnv):
+    if platform.system() == 'Windows':
+        loc = 'Data\\FalconTestData.xlsx'
+    elif platform.system() == 'Darwin':
+        loc = 'Data/FalconTestData.xlsx'
+    SheetName = 'EnvLoginDetails'
+    testcase = uEnv
+    return fncGetValues(loc, SheetName, testcase)
+
+def getData(SheetName, testcase):
+    if platform.system() == 'Windows':
+        loc = 'Data\\FalconTestData.xlsx'
+    elif platform.system() == 'Darwin':
+        loc = 'Data/FalconTestData.xlsx'
+    return fncGetValues(loc, SheetName, testcase)
 
 
 def fncSelectDDElement(sl, ddelement, uValue):

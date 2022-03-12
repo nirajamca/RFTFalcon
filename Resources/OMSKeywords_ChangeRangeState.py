@@ -3,16 +3,10 @@ from robot.api.deco import keyword
 import AccessRepository as AR
 import CommonFunctions as CF
 
-
-def getData():
-    loc = 'Data\\FalconTestData.xlsx'
-    SheetName = BuiltIn().get_variable_value('${Company}')
-    testcase = 'ChangeRangeState'
-    return CF.fncGetValues(loc, SheetName, testcase)
-
 @keyword
 def Change_Range_State_if_required():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'ChangeRangeState')
     uChangeRangeState = myData['Option1']
     uRangeState = myData['Option2']
 

@@ -3,12 +3,7 @@ from robot.api.deco import keyword
 import AccessRepository as AR
 import CommonFunctions as CF
 import openpyxl
-
-def getData():
-    loc = 'Data\\FalconTestData.xlsx'
-    SheetName = BuiltIn().get_variable_value('${Company}')
-    testcase = 'UnderlyingPolicies'
-    return CF.fncGetValues(loc, SheetName, testcase)
+import platform
 
 
 def fncAddUnderLyingPolicyCoverage(sl, uLayerNumber, uPolicyType, uCarrier, uULCoverageCode, uULCoverageType,
@@ -71,7 +66,8 @@ def Go_To_UL_Policies():
 
 @keyword
 def Delete_Existing_Policies_if_Required():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'UnderlyingPolicies')
     uDeletePolicies = myData['Option1']
 
     if uDeletePolicies == 'Yes':
@@ -87,12 +83,16 @@ def Delete_Existing_Policies_if_Required():
 
 @keyword
 def Add_Layers():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'UnderlyingPolicies')
     uToAddLayers = myData['Option2']
     uLayers = myData['Option3']
 
     if uToAddLayers == 'Yes':
-        loc = 'Data\\FalconTestData.xlsx'
+        if platform.system() == 'Windows':
+            loc = 'Data\\FalconTestData.xlsx'
+        elif platform.system() == 'Darwin':
+            loc = 'Data/FalconTestData.xlsx'
         wb = openpyxl.load_workbook(loc)
         sheet = wb['UnderlyingPolicies']
 
@@ -120,7 +120,8 @@ def Save_Layers():
     sl.click_button(AR.idbtnOneShieldNext)
     BuiltIn().sleep(2)
 
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'UnderlyingPolicies')
     uToAddLayers = myData['Option2']
 
     if uToAddLayers == 'Yes':

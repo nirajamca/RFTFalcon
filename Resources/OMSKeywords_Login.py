@@ -3,16 +3,10 @@ from robot.api.deco import keyword
 import AccessRepository as AR
 import CommonFunctions as CF
 
-def getLoginCreds():
-    uEnvironment = BuiltIn().get_variable_value('${Env}')
-    loc = 'Data\\FalconTestData.xlsx'
-    SheetName = 'EnvLoginDetails'
-    testcase = uEnvironment
-    return CF.fncGetValues(loc, SheetName, testcase)
-
 @keyword
 def Open_Browser_To_Login_Page():
-    uLoginCreds = getLoginCreds()
+    uEnvironment = BuiltIn().get_variable_value('${Env}')
+    uLoginCreds = CF.getLoginCreds(uEnvironment)
     sl = BuiltIn().get_library_instance('SeleniumLibrary')
     sl.create_webdriver('Chrome')
     sl.maximize_browser_window()
@@ -25,7 +19,8 @@ def Open_Browser_To_Login_Page():
 
 @keyword
 def Enter_Login_Credentials():
-    uLoginCreds = getLoginCreds()
+    uEnvironment = BuiltIn().get_variable_value('${Env}')
+    uLoginCreds = CF.getLoginCreds(uEnvironment)
     sl = BuiltIn().get_library_instance('SeleniumLibrary')
     try:
         sl.input_text(AR.txtOMS_ClientID,uLoginCreds['Client'])
