@@ -3,11 +3,6 @@ from robot.api.deco import keyword
 import AccessRepository as AR
 import CommonFunctions as CF
 
-def getData():
-    loc = 'Data\\FalconTestData.xlsx'
-    SheetName = BuiltIn().get_variable_value('${Company}')
-    testcase = 'Quotations'
-    return CF.fncGetValues(loc, SheetName, testcase)
 
 @keyword
 def Go_To_Quotations():
@@ -22,7 +17,8 @@ def Go_To_Quotations():
 
 # @keyword
 def Add_Organization():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'Quotations')
     uQCarrier = myData['Option1']
     uQDescription = myData['Option2']
     uQBrokerCommission = myData['Option3']
@@ -68,7 +64,8 @@ def Select_Quote():
 
 @keyword
 def Enter_Range_State_Elements():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'Quotations')
     uRangeStateFlag = myData['Option5']
     uRSRFactor = myData['Option6']
     uRSRFactorApplied = myData['Option7']
@@ -91,7 +88,8 @@ def Enter_Range_State_Elements():
 
 @keyword
 def Add_Schedule_Rating():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'Quotations')
     uComplexityofRisk = myData['Option10']
     uRevenueSource = myData['Option11']
     uCvrgEnhancementsRestrictions = myData['Option12']
@@ -175,7 +173,8 @@ def Add_Schedule_Rating():
 
 @keyword
 def Enter_Coverage():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'Quotations')
     uLOLLimit = myData['Option26']
     uLOLDedRet = myData['Option27']
 

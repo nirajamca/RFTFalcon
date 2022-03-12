@@ -4,13 +4,6 @@ from datetime import date, time
 import AccessRepository as AR
 import CommonFunctions as CF
 
-
-def getData():
-    loc = 'Data\\FalconTestData.xlsx'
-    SheetName = BuiltIn().get_variable_value('${Company}')
-    testcase = 'NewSubmission'
-    return CF.fncGetValues(loc, SheetName, testcase)
-
 @keyword
 def Go_to_New_Submissions_Tab():
     sl = BuiltIn().get_library_instance('SeleniumLibrary')
@@ -23,7 +16,8 @@ def Go_to_New_Submissions_Tab():
 
 @keyword
 def Enter_Details_in_Overview():
-    myData = getData()
+    uCompany = BuiltIn().get_variable_value('${Company}')
+    myData = CF.getData(uCompany, 'NewSubmission')
     uInsuredOrg = myData['Option1']
     uUnderwriter = myData['Option2']
     uProgram = myData['Option3']

@@ -16,7 +16,8 @@ ${Env}       PreProd
 ${Company}   Bally
 
 *** Keywords ***
-    myNote   [Documentation]  All Keywords are available in their respective resource files
+myNote
+    [Documentation]  All Keywords are available in their respective resource files
 
 *** Test Cases ***
 OMS Login
