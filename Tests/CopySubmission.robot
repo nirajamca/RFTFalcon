@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation       Simple example using SeleniumLibrary
 Library             SeleniumLibrary
-#Variables           ../Data/OMSData.py
 Library            ../Resources/OMSKeywords_Login.py
 Library            ../Resources/OMSKeywords_SearchSubmission.py
+Library            ../Resources/OMSKeywords_CopySubmission.py
 Library            ../Resources/OMSKeywords_ChangeRangeState.py
 Library            ../Resources/OMSKeywords_UWQuestions.py
 Library            ../Resources/OMSKeywords_Modifiers.py
@@ -34,6 +34,11 @@ Search for Submission
     Enter Submission Number
     Enter Prefix if Necessary
     Search for Submission
+
+Copy Submission
+    Go to Actions
+    Copy Submission
+    Verify that Submission is copied
 
 Change Range State
     Change Range State if required

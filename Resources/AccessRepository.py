@@ -38,6 +38,11 @@ idtxtSubmissionSearchSubSuffix = 'id:ctl00__MainContent_ucSearchCtrl__sc_submiss
 xPathbtnSubmissionsRunSearch = 'xpath://*[@id="ctl00__MainContent_ucSearchCtrl_btnSearch_input"]'
 xPathtrSubmissionsFirstRow = 'xpath://*[@id="ctl00__MainContent_ucSearchCtrl_gvResults"]/tbody/tr[2]'
 
+xPathbtnSubmissionActions = 'xpath://*[@id="ctl00__MainContent_pnlSummary"]/table/tbody/tr/td[2]/div[1]/button[2]'
+idOptSubmissionCopy = 'id:ctl00__MainContent_rptActions_ctl00_rptActionChildItems_ctl00_childActionItem'
+idlblSubmissionBanner = 'id:ctl00__MainContent_ucMessages_lblInfoMsg'
+idlblSummaryText = 'id:ctl00__MainContent_lbSummaryText'
+
 UWQuestionsTab = 'xpath://*[@id="ctl00__MainContent_mnuDataTabs"]/ul/li[2]'
 ModifiersTab = 'xpath://*[@id="ctl00__MainContent_mnuDataTabs"]/ul/li[3]/a/span'
 UnderlyingPoliciesTab = 'xpath://*[@id="ctl00__MainContent_mnuDataTabs"]/ul/li[5]/a/span'
