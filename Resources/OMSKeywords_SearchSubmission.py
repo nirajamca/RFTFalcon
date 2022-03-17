@@ -16,16 +16,20 @@ def Go_to_Submissions_Tab():
 @keyword
 def Enter_Submission_Number():
     uCompany = BuiltIn().get_variable_value('${Company}')
-    myData = CF.getData(uCompany, 'SearchSubmission')
-    uSubmissionNumber = myData['Option1']
+    uSubmissionNumber = BuiltIn().get_variable_value('${SubmissionNumber}')
+    if uSubmissionNumber == 'dummy':
+        myData = CF.getData(uCompany, 'SearchSubmission')
+        uSubmissionNumber = myData['Option1']
     sl = BuiltIn().get_library_instance('SeleniumLibrary')
     sl.input_text(AR.idtxtSubmissionSearchSubNumber, uSubmissionNumber)
 
 @keyword
 def Enter_Prefix_if_Necessary():
     uCompany = BuiltIn().get_variable_value('${Company}')
-    myData = CF.getData(uCompany, 'SearchSubmission')
-    uSubmissionPrefix = myData['Option2']
+    uSubmissionPrefix = BuiltIn().get_variable_value('${SubmissionPrefix}')
+    if uSubmissionPrefix == 'dummy':
+        myData = CF.getData(uCompany, 'SearchSubmission')
+        uSubmissionPrefix = myData['Option2']
     if uSubmissionPrefix is None:
         y = 1
     else:
