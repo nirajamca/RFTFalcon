@@ -43,23 +43,23 @@ Copy Submission
 Change Range State
     Change Range State if required
 
-UW Questions
-    Go to UW Questions
-    Add Policy Information
-    Add Underlying Insurance Risk Factors
-    Save UW Questions
-
-Modifiers
-    Go To Modifiers
-    Add Coverage Modifiers
-    Add Other RiskFactors
-    Save Modifiers
-
-Underlying Polocies
-    Go To UL Policies
-    Delete Existing Policies if Required
-    Add Layers
-    Save Layers
+#UW Questions
+#    Go to UW Questions
+#    Add Policy Information
+#    Add Underlying Insurance Risk Factors
+#    Save UW Questions
+#
+#Modifiers
+#    Go To Modifiers
+#    Add Coverage Modifiers
+#    Add Other RiskFactors
+#    Save Modifiers
+#
+#Underlying Polocies
+#    Go To UL Policies
+#    Delete Existing Policies if Required
+#    Add Layers
+#    Save Layers
 
 Quotations
     Go To Quotations

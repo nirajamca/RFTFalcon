@@ -1,5 +1,6 @@
 from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import keyword
+import chromedriver_autoinstaller
 import AccessRepository as AR
 import CommonFunctions as CF
 
@@ -8,6 +9,7 @@ def Open_Browser_To_Login_Page():
     uEnvironment = BuiltIn().get_variable_value('${Env}')
     uLoginCreds = CF.getLoginCreds(uEnvironment)
     sl = BuiltIn().get_library_instance('SeleniumLibrary')
+    chromedriver_autoinstaller.install()
     sl.create_webdriver('Chrome')
     sl.maximize_browser_window()
     sl.go_to(uLoginCreds['URL'])
